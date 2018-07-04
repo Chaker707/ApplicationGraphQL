@@ -1,0 +1,12 @@
+type Categorie {
+	id: ID!
+	description: String!
+}
+
+extend type Query  {
+	getAllcategorie :[Categorie]!
+}
+
+extend type Mutation {
+	addCategorie(description : String!) : Categorie!
+}
