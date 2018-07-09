@@ -17,12 +17,6 @@ public class Mutation implements GraphQLMutationResolver {
 		this.daoprod = daoprod;
 	}
 	
-	public Categorie addCategorie(String description) {
-		Categorie cat= new Categorie(description);
-		daocat.save(cat);
-		return cat;
-	}
-	
 	public Produit addProduit(String description, float prix, Integer Categorieid) {
 		Produit p= new Produit(description, prix, new Categorie(Categorieid));
 		daoprod.save(p);
@@ -34,6 +28,26 @@ public class Mutation implements GraphQLMutationResolver {
 		return true;
 	}
 	
+	public Produit updateProduit(String description, float prix, Integer id) {
+        Produit p = daoprod.findOne(id);
+        p.setPrix(prix);
+        p.setDescription(description);
+        daoprod.save(p);
+        return p;
+    }
+	
+
+	public Categorie addCategorie(String description) {
+		Categorie cat= new Categorie(description);
+		daocat.save(cat);
+		return cat;
+	}
+	
+	
+	public boolean deleteCategorie(Integer id) {
+		daocat.delete(id);
+		return true;
+	}
 	
 	
 }

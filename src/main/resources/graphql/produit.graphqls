@@ -8,9 +8,11 @@ type Produit {
 type Query {
 	getAllProduit: [Produit]!
 	getProduit(id: ID!) : Produit!
+	getAllProduitByCat(id: ID!) : [Produit]!
 }
 
 type Mutation {
 	addProduit(description: String!, prix: Float!, categorie: ID!) : Produit!
+	updateProduit(description: String!, prix: Float!, id: ID!) : Produit!
 	deleteProduit(id: ID!): Boolean
 }

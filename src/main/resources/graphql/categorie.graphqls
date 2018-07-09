@@ -5,8 +5,10 @@ type Categorie {
 
 extend type Query  {
 	getAllcategorie :[Categorie]!
+	getCategorie(id: ID!) : Categorie!
 }
 
 extend type Mutation {
 	addCategorie(description : String!) : Categorie!
+	deleteCategorie(id: ID!) : Boolean
 }
